@@ -89,9 +89,7 @@ This target in the notebook will trigger the validation process and model weight
 
 # The models: 
 
-## model_ep226_mom09.pth
-
-The model_ep226_mom09 model weigths has been frozen after 226 epocs hitting a loss of ~0.0001. Good eh.. 
+During testing I was able to train a model hitting a loss of ~0.0001 with the following loss vs epoch diagram.  Good eh.. 
 
 
 <img src="./images/loss_model_ep226_mom09.png" width="400" height="400">
@@ -105,11 +103,7 @@ They are not standard CNN networks as they add several "Residual blocks" where t
 
 # File structure and information:
 
-**final_models**: contains a list of models been created and deem good for inference.
-
 **images**: contains the images used for this read me.
-
-**old_files**: ignore. It contains old version before using git.
 
 **std_effects**: Contains a list of standard effects to be added to the wav file for training and sound augmentation. It is good practise to augment the training set to give the modeal to work in different contitions and be more general.
 
@@ -122,8 +116,6 @@ They are not standard CNN networks as they add several "Residual blocks" where t
 **audio_csv.py, audioprocess.py**: python utilities to handle audio files (at the core the project use Torchaudio and Librosa)
 
 **checkpoint_viewer.py**: this program helps reading the content of each checkpoint file created and able to extract loss information or model weights (more below).
-
-**feedforwardnet-best.pth**: best network so far (TODO: move to final_models)
 
 **processwav.ipynb**: the jupiter notebook for this project.
 
