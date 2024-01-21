@@ -1,0 +1,7 @@
+numba
+torch==1.13.0
+torchsummary
+torchaudio==0.13.0
+librosa
+SoundFile
+ipywidgets
