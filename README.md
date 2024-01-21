@@ -103,9 +103,60 @@ Resnets are standard neural networks which have been used in the space of Image 
 They are not standard CNN networks as they add several "Residual blocks" where the input is brought forward skipping the layer.
 
 
+# File structure and information:
 
+**final_models**: contains a list of models been created and deem good for inference.
 
+**images**: contains the images used for this read me.
 
+**old_files**: ignore. It contains old version before using git.
+
+**std_effects**: Contains a list of standard effects to be added to the wav file for training and sound augmentation. It is good practise to augment the training set to give the modeal to work in different contitions and be more general.
+
+**testwav**: contins the wav files used for a quick test (small validation) 
+
+**LICENSE**: the license for this project meant for educational purposes.
+
+**README.md**: this readme
+
+**audio_csv.py, audioprocess.py**: python utilities to handle audio files (at the core the project use Torchaudio and Librosa)
+
+**checkpoint_viewer.py**: this program helps reading the content of each checkpoint file created and able to extract loss information or model weights (more below).
+
+**feedforwardnet-best.pth**: best network so far (TODO: move to final_models)
+
+**processwav.ipynb**: the jupiter notebook for this project.
+
+**requirements.txt**: the dependencies for this project.
+
+**run-singlefile.py**: run the data preparation process for a single file (see notebook for more info)
+
+**run.py**: un the data preparation process for all the files (see notebook for more info)
+
+**run_regression.py**: run a test for all the wav files in testwav
+
+**tensor_util.py**: contains a group of helper funtions to manage tensors.
+
+# Checkpoins during the training process.
+
+When running training from the notebook, the algorithm checks for the presence of the file ```./checkpoint/checkpoint.pt``` 
+This file is created during the training phase and it is saved at the end of each epcoch storing information about the model weights, epoch number,lowest loss, the list of losses up to the current epoch etc..
+The algorithim also stores a set of additional checkpoints every time the current loss is lower than the minimum loss of the training process (across all the epochs). This facilitates the extraction of the model only when the loos is minimum. The file takes the following format: ```checkpoint_epoch_loss.pt``` (this file is only saved when for the epoch the overall epoch loss is lower than the minum for the training process.
+This mechnism allows a us to stop training and resume at a later stage. 
+
+The program checkpoint viewer can be used to extract info from any checkpoint file.
+
+```
+python checkpoint_viewer.py -h
+usage: checkpoint_viewer.py [-h] [-ck CHECKPOINT] [-gm GET_MODEL]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -ck CHECKPOINT, --checkpoint CHECKPOINT
+                        checkpoint file (default: checkpoint.pt)
+  -gm GET_MODEL, --get_model GET_MODEL
+                        model file (default: model_default.pth)
+```
 
 
 
